@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 
 namespace WhatsAppChatSorter
 {
@@ -42,7 +41,7 @@ namespace WhatsAppChatSorter
             int words = 0;
 
             Console.WriteLine("Enter path for file: ");
-            string infile = Console.ReadLine().Replace("\"", "");
+            string infile = Console.ReadLine().Replace("\"", "");//This became necessary because if you use 'Copy Path' in Windows 10, the path is in quotes and could cause unwanted runtime issues 
 
             Console.WriteLine("\n ");
 
@@ -123,11 +122,6 @@ namespace WhatsAppChatSorter
         public static void Main()
         {
             Program re = new Program();
-            Assembly a = typeof(Program).Assembly;
-            AssemblyName aa = new AssemblyName(a.FullName);
-            Console.WriteLine(a.GetName());
-            Console.WriteLine(a.EscapedCodeBase);
-            Console.WriteLine(a.Evidence);
             TraverseFinished += TravComp;
             re.sortChat();
         }
